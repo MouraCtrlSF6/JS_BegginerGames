@@ -1,0 +1,88 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html, .background {
+  height: 100%;
+}
+.background {
+  display: flex;
+  justify-content: center;
+  background-color: #fbeec1;
+}
+.template{
+  width: 80%;
+  height: 100%;
+  background-color: #2f2fa2;
+  display: block;
+}
+.table_block {
+  display: flex;
+  justify-content: center;
+}
+.table {
+  display: block;
+  margin-top: 35px;
+  border-collapse: collapse;
+}
+.data {
+  width: 110px;
+  height: 110px;
+  background-color: #2f2fa2 ;
+}
+.score_block, .winner_block {
+  display: flex;
+  justify-content: center;
+}
+.score_container, .winner_container {
+  margin-top: 30px;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 10px; 
+  padding: 20px 20px;
+  font-family: Mulish, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 22px;
+  color: white;
+}
+.winner_container {
+  background-color: #553d67;
+  display: flex;
+  justify-content: center;
+}
+.playerIcon{
+  width: 100px;
+  height: 100px;
+}
+.winnerDisplayIcon{
+  width: 50px;
+  height: 50px;
+}
+.winner_text{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.score_container {
+  background-color: #4169e1;
+}
+.score_header{
+  display: flex;
+  justify-content: center;
+}.score_display{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+  font-size: 32px;
+}
+.player_X{
+  color: #00ffff;
+}
+.player_O{
+  color: red;
+}
+.separator{
+  color: white
+}
