@@ -2,7 +2,6 @@ class Game {
   constructor({ order }){
     this.width = order;
     this.height = order;
-    this.playersColor = { X: '#2f2fa2', O: '#f64c72' }
     this.render( 0, 0, 'X')
   }
   render(playerXScore, playerOScore, turnPlayer){
@@ -115,7 +114,6 @@ class Game {
     if(!cell.innerHTML){
       playerIcon = this._generateIcon(player, false)
       cell.appendChild(playerIcon)
-      cell.style.backgroundColor = this.playersColor[player]
       return { validSet: true }
     }
     return { validSet: false }
