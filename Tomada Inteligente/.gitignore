@@ -1,8 +1,0 @@
-#dependencies
-/node_modules
-/Generic_API/node_modules
-
-#misc
-.env
-/Generic_API/.env
-
