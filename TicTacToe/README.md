@@ -1,2 +1,0 @@
-# TicTacToe
-First JavaScript Game!
