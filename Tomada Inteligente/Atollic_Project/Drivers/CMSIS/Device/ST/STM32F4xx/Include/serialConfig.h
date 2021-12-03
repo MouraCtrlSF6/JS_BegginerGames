@@ -11,6 +11,7 @@
 #endif /* CMSIS_DEVICE_ST_SETSERIAL_H_ */
 
 #include "stm32f4xx.h"
+#include <math.h>
 
 float calcUsartDiv(int baud, int over8){
 	const float fck = 16000000.0;
@@ -22,9 +23,9 @@ int BRR_VALUE(float USART_DIV, int over8) {
 	int fractional_part = 0;
 
 	if(!over8) {
-		fractional_part = (USART_DIV - mantisa_part) * 16;
+		fractional_part = round((USART_DIV - mantisa_part) * 16);
 	} else {
-		fractional_part = (USART_DIV - mantisa_part) * 8;
+		fractional_part = round((USART_DIV - mantisa_part) * 8);
 	}
 
 	return (mantisa_part << 4) + fractional_part;
@@ -62,8 +63,7 @@ void setUsart2Config(int BRR_VALUE){
 	USART2->CR2|=0x00;
 	USART2->CR3|=0x00;
 
-	// USART2->BRR = BRR_VALUE;
-	USART2->BRR|=104<<4;
+	USART2->BRR = BRR_VALUE;
 }
 
 void setSerial(int baud, int over8, int usart){
@@ -80,22 +80,23 @@ void setSerial(int baud, int over8, int usart){
 	}
 }
 
-char getSerial(char command){
+char getSerial(){
+	char command = 0;
+
 	if(USART2->SR&USART_SR_RXNE){
 		command = USART2->DR;
-	} else {
-		//Não foi possível receber da serial
-		command = 'N';
 	}
 
 	return command;
 }
 
 void sendSerial(char *payload, uint8_t len, int txDelay){
+	char log;
 	while (!(USART2->SR & USART_SR_TXE)) {};
 
 	for(uint8_t i = 0; i < len; i++){
-		USART2->DR = *(payload + i);
+		log = *(payload + i);
+		USART2->DR = log;
 		delay(txDelay);
 	}
 }
